@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Password Generator</title>
+
+<!--
+http://www.gnu.org/licenses/gpl-3.0.html
+GNU General Public License version 3
+
+Dharmatech
+358 S. 700 E., Suite B - 350
+SLC, UT 84102
+
+p: 801.541.8671
+e: jason@dharmatech.org 
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 3 of
+the License, or (at your option) any later version.
+ 
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+ 
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<script type="text/javascript" charset="utf-8">
+
+function generate(c, n) {
+  var pass = "";
+  var chars = "abcdefghiklmnopqrstuvwxyz";
+  var nums = "0123456789";
+
+  for (var i = 0; i < 8; i++) {
+    pass += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+
+  if (c) {
+    var idx = Math.floor(Math.random() * pass.length);
+    pass = pass.substr(0, idx) +
+        pass.charAt(idx).toUpperCase() +
+        pass.substr(idx + 1);
+  }
+
+  if (n) {
+    var idx = Math.floor(Math.random() * pass.length);
+    pass = pass.substr(0, idx) +
+        nums.charAt(Math.floor(Math.random() * nums.length)) +
+        pass.substr(idx + 1);
+  }
+
+  alert(pass);
+}
+
+function performCommand(event) {
+  if (event.command === "generate") {
+    generate(safari.extension.settings.caps, safari.extension.settings.nums);
+  }
+}
+
+safari.application.addEventListener("command", performCommand, true);
+
+</script>
+</head>
+<body>
+</body>
+</html>

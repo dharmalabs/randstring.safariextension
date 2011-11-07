@@ -1,0 +1,26 @@
+Simple JS to generate a password string 8 characters in length with settings to
+include numbers and/or caps. It's invoked from the context menu and displays a
+popup with your fancy-schmancy new password string. This was a
+"scratch-your-own-itch" quickie project and general curiosity with writing an
+extension.
+
+Before you can install this extension, you will need to signup for the Safari
+Developer Program to obtain a developer certficate.
+
+http://developer.apple.com/
+
+Once the certificate is installed you can sign the extension. To add the
+extension, open Extension Builder and add randstring.safariextension.
+
+TODO:
+
+Adding an arbitrary string length option would be nice, but:
+  a. The slider in extensions builder is lame since it doesn't tell the user
+     what the value is.
+  b. Tried hacking the JS to peek into the extensions settings window and
+     update the slider label but the settings window is outside of the sandbox.
+  c. A textfield is lame because there's no validation and the user can put
+     whatever they want into the field.
+  d. The only option seems to be creating a special options page instead of the
+     default built by extensions builder.
+
